@@ -14,7 +14,7 @@
     vars: #task level declaration
      COURSE: "ANSIBLE"
     ansible.builtin.debug:
-    msg: "{{COURSE}}"  
+     msg: "{{COURSE}}"  
 
   
   - name: print the info again

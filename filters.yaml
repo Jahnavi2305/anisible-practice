@@ -1,0 +1,7 @@
+- name: functions or filters
+  hosts: web 
+  tasks:
+  - name: print the default variable
+    ansible.builtin.debug:
+     msg: "{{course | default ('ansible')}}"              #msg: "{{course}}"   so her intially we have give {{course}} and did not declare it anywhere which may throw error so we can given default function(filter) 
+    

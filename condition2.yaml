@@ -3,8 +3,8 @@
   become: yes
   tasks:
   - name: check whether expens eis present or not
-   ansible.builtin.command: id expense
-   register: USER #here USER is a variable that gets output from above command
+    ansible.builtin.command: id expense
+    register: USER #here USER is a variable that gets output from above command
 
    -name: priting what is there in user
     ansible.builtin.debug: 

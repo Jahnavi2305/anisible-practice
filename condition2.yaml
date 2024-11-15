@@ -3,10 +3,15 @@
   become: yes
   tasks:
   - name: check whether expens eis present or not
-    ansible.builtin.command: id expense
+    ansible.builtin.command: id expense #check whether user is present or not
     register: USER #here USER is a variable that gets output from above command
+    ignore_errors: true
 
   - name: priting what is there in user
     ansible.builtin.debug: 
      msg: "user info :{{ USER }}"
+
+  - name: if user is not created , then create
+    ansible.builtin.command: useradd expense
+    when: USER.rc != 0
     

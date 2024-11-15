@@ -1,5 +1,6 @@
 - name: datatypes
   hosts: local
+  connection: local
   vars:
    COURSE: AWSDEVOPS #string
    DURATION: 120 #number

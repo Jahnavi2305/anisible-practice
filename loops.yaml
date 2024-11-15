@@ -4,7 +4,7 @@
   tasks: 
   - name: print names
     ansible.builtin.debug:
-     msg: " {{items}} "
+     msg: " {{item}} "  #item is reserved keyword to loop the elements
     loop:
     - vishnu
     - janu 

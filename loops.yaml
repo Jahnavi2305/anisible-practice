@@ -4,7 +4,17 @@
   tasks: 
   - name: print names
     ansible.builtin.debug:
-     msg: " {{item}} "  #item is reserved keyword to loop the elements
+     msg: " {{item}} "  #item is reserved keyword to loop the Elements
+     state: present
     loop:
     - vishnu
     - janu 
+
+  - name: print names again 
+    ansible.builtin.debug:
+     msg: " {{item.name}}"
+     state: "{{item.state}}"
+    loop:
+    - { name: vishnu , state: present} 
+    - { name: janu , state: present}
+     

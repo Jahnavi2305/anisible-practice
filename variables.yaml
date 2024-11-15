@@ -1,6 +1,6 @@
 - name: variables to print
   hosts: web
-  vars: 
+  vars: #this varible declaration is at playlevel..so habe access to all tasks
    COURSE: AWSDEVOPS
    DURATION: 120
 
@@ -8,3 +8,15 @@
   - name: print the info
     ansible.builtin.debug: 
       msg: "Hi, i am learing {{COURSE}} and duration is {{DURATION}}"
+
+  
+  - name: print the info again
+    vars: #task level declaration
+     COURSE: "ANSIBLE"
+    ansible.builtin.debug:
+    msg: "{{COURSE}}"  
+
+  
+  - name: print the info again
+    ansible.builtin.debug:
+     msg: "{{COURSE}}"

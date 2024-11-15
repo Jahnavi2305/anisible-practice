@@ -5,10 +5,9 @@
     ansible.builtin.debug:
      msg: this is first task in first play
 
--name: PLAY02
- hosts: web
- tasks:
- -name: PLAY02 TASK01
-  ansible.builtin.debug:
-   -msg: this first task in second play
-   
+- name: PLAY02
+  hosts: web
+  tasks:
+  - name: PLAY02 TASK01
+    ansible.builtin.debug:
+     msg: this first task in second play

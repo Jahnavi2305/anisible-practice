@@ -1,0 +1,6 @@
+- name: passing variables from arugments
+  hosts: web
+  tasks:
+   - name: course details
+     ansible.builtin.debug:
+      msg: "{{COURSE}} {{DURATION}}"

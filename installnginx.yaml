@@ -4,7 +4,7 @@
   tasks:
   - name: gather the facts
     ansible.builtin.debug:
-     msg: "ansible facts are {{ ansible facts}}"
+     msg: "ansible facts are {{ ansible_facts}}"
   - name: install nginx if redhat
     ansible.builtin.dnf:
      name: nginx

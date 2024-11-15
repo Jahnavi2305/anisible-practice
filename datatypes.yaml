@@ -13,12 +13,12 @@
    - K8
    live: true #boolean
    tools:
-   ci: jenkins
-   cm: ansible
-   cloud: aws
-   aws:
-   - IAM
-   - EC2
+     ci: jenkins
+     cm: ansible
+     cloud: aws
+     aws:
+      - IAM
+      - EC2
   tasks: 
   - name: here is the course details
     ansible.builtin.debug:

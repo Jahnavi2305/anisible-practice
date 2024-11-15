@@ -1,0 +1,17 @@
+- name: when condition
+  hosts: local
+  connection: local
+  vars_prompt:
+  - name: my_number
+    prompt: enter the number
+    private: false
+  tasks:
+  - name: check enetered number is less than 10
+    ansible.builtin.debug:
+     msg: "Given number {{my_number}} is less than 10"
+    when: my_number | int < 10 #conditional expression | int is used because by default it will take string
+  tasks:
+  - name: chcek entered numeber is more than 10
+    ansible.builtin.debug:
+     msg: eneterd number  {{my_number}} is greater than or equal to 10
+    when: my_number | int >= 10 

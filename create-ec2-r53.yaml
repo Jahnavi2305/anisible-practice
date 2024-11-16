@@ -27,7 +27,7 @@
   
   #record for private ip address
   - name: create r53 record
-    ansible.builtin.route53:
+    amazon.aws.route53:
      state: present
      zone: "{{ zone }}"
      record: "{{ item.item }}.{{ zone }}" #this will give the name as mysql.devops20lpa.online
@@ -40,7 +40,7 @@
 
     #record for public ip only public ip address for frontend
   - name: create r53 record
-    ansible.builtin.route53:
+    amazon.aws.route53:
       state: present
       zone: "{{ zone }}"
       record: "{{ zone }}" #this will give the name `devops20lpa.online

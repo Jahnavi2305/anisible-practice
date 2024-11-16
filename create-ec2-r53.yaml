@@ -1,0 +1,20 @@
+- name: create ec2 and r53 records
+  hosts: local
+  connection: local
+  vars:
+   subnet_id: subnet-01df9781d6aa29990 #we will be giving ansible server subnet id
+   ami_id: ami-09c813fb71547fc4f
+   sg_id: sg-010d164dd25339303 
+   instance:
+   - mysql
+   - backend
+   - frontend
+  tasks: 
+  - name: create ec2 instance
+    amazon.aws.ec2_instance:
+     name:
+     vpc_subnet_id: 
+     instance_type: t2.micro  
+     security_group: "{{ sg_id }}"
+     image_id: " {{ ami_id }} "
+    loops: "{{ instances }}"   

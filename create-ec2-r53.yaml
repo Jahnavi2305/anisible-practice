@@ -5,15 +5,15 @@
     subnet_id: subnet-01df9781d6aa29990 #we will be giving ansible server subnet id
     ami_id: ami-09c813fb71547fc4f
     sg_id: sg-010d164dd25339303 
-    instance:
+    instances:
     - mysql
     - backend
     - frontend
   tasks: 
   - name: create ec2 instance
     amazon.aws.ec2_instance:
-     name: "{{ iteam }}"
-     vpc_subnet_id: 
+     name: "{{ item }}"
+     vpc_subnet_id: "{{ subnet_id }}"
      instance_type: t2.micro  
      security_group: "{{ sg_id }}"
      image_id: " {{ ami_id }} "

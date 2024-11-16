@@ -23,3 +23,15 @@
   - name: print the output
     ansible.builtin.debug: 
      msg: "{{ ec2_instances }}"
+  
+  - name: create r53 record
+    ansible.builtin.route53:
+     state: present
+     zone: devops20lpa.online
+     record: "{{ item.item }}.{{ zone }}" #this will give the name as mysql.devops20lpa.online
+     type: A
+     ttl: 1
+     value: "{{ item.instances[0].private_ip_address }}" #this will give the private ip of server each time
+     wait: true
+     overwrite: true #this will override the existing records
+    loop: "{{ ec2_instances_results }}"

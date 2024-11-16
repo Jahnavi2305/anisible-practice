@@ -49,6 +49,6 @@
       value: "{{ item.instances[0].public_ip_address }}" #this will give the private ip of server each time
       wait: true
       overwrite: true #this will override the existing records
-      loop: "{{ ec2_instances.results }}"
+    loop: "{{ ec2_instances.results }}"
     when: item.item == "frontend"
 

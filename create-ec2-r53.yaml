@@ -25,6 +25,7 @@
     ansible.builtin.debug: 
      msg: "{{ ec2_instances }}"
   
+  #record for private ip address
   - name: create r53 record
     ansible.builtin.route53:
      state: present
@@ -36,3 +37,18 @@
      wait: true
      overwrite: true #this will override the existing records
     loop: "{{ ec2_instances.results }}"
+
+    #record for public ip only public ip address for frontend
+    - name: create r53 record
+      ansible.builtin.route53:
+       state: present
+       zone: "{{ zone }}"
+       record: "{{ item.item }}.{{ zone }}" #this will give the name as mysql.devops20lpa.online
+       type: A
+       ttl: 1
+       value: "{{ item.instances[0].public_ip_address }}" #this will give the private ip of server each time
+       wait: true
+       overwrite: true #this will override the existing records
+       loop: "{{ ec2_instances.results }}"
+       when: item.item == "frontend"
+

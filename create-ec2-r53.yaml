@@ -3,8 +3,8 @@
   connection: local
   vars:
     subnet_id: subnet-01df9781d6aa29990 #we will be giving ansible server subnet id
-    ami_id: ami-09c813fb71547fc4f
-    sg_id: sg-010d164dd25339303 
+    ami_id: "ami-09c813fb71547fc4f"
+    sg_id: "sg-010d164dd25339303" 
     instances:
     - mysql
     - backend
